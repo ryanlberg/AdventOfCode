@@ -1,4 +1,6 @@
 
+from collections import defaultdict
+
 def readFile(filepath):
     out = []
     infile = open(filepath, 'r')
@@ -18,8 +20,21 @@ def sumToTwentyTwenty_two(report):
     return -1 
 
 
-def sumToTwentyTwenty_three(report))
+def sumToTwentyTwenty_three(report):
+    SUM_TO_FIND = 2020
+    seen = defaultdict(int)
+    for i in range(len(report)):
 
+        for j in range(i+1, len(report)):
+            seen[report[i] + report[j]] = report[i] * report[j]
+
+    for number in report:
+        needed = SUM_TO_FIND - number
+        if needed in seen:
+            return seen[needed] * number
+    
+    return -1
 if __name__ == "__main__":
     numlist = readFile('input.txt')
-    print(sumToTwentyTwenty(numlist))
+    print(sumToTwentyTwenty_two(numlist))
+    print(sumToTwentyTwenty_three(numlist))
