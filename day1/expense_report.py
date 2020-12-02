@@ -7,6 +7,7 @@ def readFile(filepath):
     for number in infile:
         out.append(int(number))
     
+    infile.close()
     return out
 
 def sumToTwentyTwenty_two(report):
